@@ -72,5 +72,5 @@ docker pull vizshrc/nginx
 ####4.我个人需要的挂载的命令调整如下：
 
 docker run --name nginx -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d:ro -v /var/www:/var/www:ro -v /root:/root/:ro --net v2-net -d vizshrc/nginx
-- ![Alt text](./截屏2019-11-13下午10.59.15.png)
+- ![index.html](http://github.com/vizshrc/readme_pic/raw/master/images_folder/webdav.png)
 
