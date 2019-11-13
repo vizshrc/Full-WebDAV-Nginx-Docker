@@ -66,4 +66,5 @@ docker pull vizshrc/nginx
 到这里正常来说就成功了，可以去访问试试
 
 ####4.我个人需要的挂载的命令调整如下：
+
 docker run --name nginx -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d:ro -v /var/www:/var/www:ro -v /root:/root/:ro --net v2-net -d vizshrc/nginx
