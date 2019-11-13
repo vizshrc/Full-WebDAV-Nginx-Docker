@@ -19,7 +19,7 @@ vi /etc/nginx/conf.d/davhttps.conf
 
 写入示例文件：
     server {
-    listen  443 ssl;
+        listen  443 ssl;
     #ssl on;
     ssl_certificate       /root/.acme.sh/feeling.com_ecc/feeling.com.cer;
     ssl_certificate_key   /root/.acme.sh/feeling.com_ecc/feeling.com.key;
