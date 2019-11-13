@@ -18,16 +18,15 @@ docker pull vizshrc/nginx
 vi /etc/nginx/conf.d/davhttps.conf
 
 写入示例文件：
-<code>
-  server {
-  listen  443 ssl;
-  #ssl on;
-  ssl_certificate       /root/.acme.sh/feeling.com_ecc/feeling.com.cer;
-  ssl_certificate_key   /root/.acme.sh/feeling.com_ecc/feeling.com.key;
-  ssl_protocols         TLSv1 TLSv1.1 TLSv1.2 ;
-  ssl_ciphers           HIGH:!aNULL:!MD5;
-  server_name           dl.feeleg.com;
-</code>
+    server {
+    listen  443 ssl;
+    #ssl on;
+    ssl_certificate       /root/.acme.sh/feeling.com_ecc/feeling.com.cer;
+    ssl_certificate_key   /root/.acme.sh/feeling.com_ecc/feeling.com.key;
+    ssl_protocols         TLSv1 TLSv1.1 TLSv1.2 ;
+    ssl_ciphers           HIGH:!aNULL:!MD5;
+    server_name           dl.feeleg.com;
+
 #这里说明网站地址
     error_log /var/log/nginx/webdav.error.log error;
     access_log  /var/log/nginx/webdav.access.log combined;
