@@ -1,5 +1,5 @@
 # Full-WebDAV-Nginx-Docker
-有什么用？请参阅https://github.com/arut/nginx-dav-ext-module
+一、有什么用？请参阅https://github.com/arut/nginx-dav-ext-module
 
 就是从nginx官方的dockerfile里加入了上面github链接的nginx-dav-ext-module，从而实现完整的webdav。
 
@@ -8,9 +8,11 @@
 nginx.conf里默认加载了webdav模块，即load_module modules/ngx_http_dav_ext_module.so;
 
 你可以使用dockerfile自己编译，也可以docker hub直接拉取我的Image
+docker pull vizshrc/nginx
 详情：https://hub.docker.com/repository/docker/vizshrc/nginx
 
-使用方式：
+
+二、使用方式：
 1.创建nginx配置文件
 vi /etc/nginx/conf.d/davhttps.conf
 
@@ -59,7 +61,7 @@ apt-get install apache2-utils
   这会覆盖container中的/etc/nginx,这样会宿主机目录没有这个模块或nginx.conf没有写加载模块而失败，如果分开挂载则麻烦
 
 docker run --name nginx -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d:ro -v /root:/root/:ro -d vizshrc/nginx
-到这里正常来说就成功了
+到这里正常来说就成功了，可以去访问试试
 
-4.我个人需要的挂载的命令如下：
+4.我个人需要的挂载的命令调整如下：
 docker run --name nginx -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d:ro -v /var/www:/var/www:ro -v /root:/root/:ro --net v2-net -d vizshrc/nginx
