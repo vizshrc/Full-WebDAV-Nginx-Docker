@@ -18,6 +18,7 @@ docker pull vizshrc/nginx
 ##二、使用方式：
 
 ###1.创建nginx配置文件
+
 `vi /etc/nginx/conf.d/davhttps.conf`
 
 写入示例文件：
@@ -30,7 +31,7 @@ docker pull vizshrc/nginx
     ssl_protocols         TLSv1 TLSv1.1 TLSv1.2 ;
     ssl_ciphers           HIGH:!aNULL:!MD5;
     server_name           dl.feeleg.com;
-
+    
     error_log /var/log/nginx/webdav.error.log error;
     access_log  /var/log/nginx/webdav.access.log combined;
     location / {
@@ -62,6 +63,7 @@ docker pull vizshrc/nginx
 `apt-get install apache2-utils`
 
 ###3.创建并启动docker
+
   至少需要挂载/etc/nginx/conf.d  
   同时container中包含nginx.conf已经加载webdav模块，所以不建议挂载整个/etc/nginx,
   这会覆盖container中的/etc/nginx,这样会宿主机目录没有这个模块或nginx.conf没有写加载模块而失败，如果分开挂载则麻烦
@@ -71,6 +73,5 @@ docker pull vizshrc/nginx
 
 ####4.我个人需要的挂载的命令调整如下：
 
-docker run --name nginx -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d:ro -v /var/www:/var/www:ro -v /root:/root/:ro --net v2-net -d vizshrc/nginx
+`docker run --name nginx -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d:ro -v /var/www:/var/www:ro -v /root:/root/:ro --net v2-net -d vizshrc/nginx`
  ![index.html](https://github.com/vizshrc/readme_pic/blob/master/image/webdav.png)
-
