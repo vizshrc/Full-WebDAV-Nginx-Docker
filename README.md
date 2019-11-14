@@ -1,6 +1,6 @@
 # Full-WebDAV-Nginx-Docker
 
-##一、有什么用？请参阅[nginx-dav-ext-module](https://github.com/arut/nginx-dav-ext-module)
+## 一、有什么用？请参阅[nginx-dav-ext-module](https://github.com/arut/nginx-dav-ext-module)
 
 就是从nginx官方的dockerfile里加入了上面github链接的nginx-dav-ext-module，从而实现完整的webdav。
 
@@ -15,9 +15,9 @@ docker pull vizshrc/nginx
 详情：[my docker hub](https://hub.docker.com/repository/docker/vizshrc/nginx)
 
 
-##二、使用方式：
+## 二、使用方式：
 
-###1.创建nginx配置文件
+### 1.创建nginx配置文件
 
 `vi /etc/nginx/conf.d/davhttps.conf`
 
@@ -54,7 +54,7 @@ docker pull vizshrc/nginx
     }
 
 
-###2.创建用户，最好把.htpasswd放在/etc/nginx/conf.d下面，所以命令是
+### 2.创建用户，最好把.htpasswd放在/etc/nginx/conf.d下面，所以命令是
 
 `htpasswd -c /etc/nginx/conf.d/.htpasswd username`
 
@@ -62,7 +62,7 @@ docker pull vizshrc/nginx
 
 `apt-get install apache2-utils`
 
-###3.创建并启动docker
+### 3.创建并启动docker
 
   至少需要挂载/etc/nginx/conf.d  
   同时container中包含nginx.conf已经加载webdav模块，所以不建议挂载整个/etc/nginx,
@@ -71,7 +71,7 @@ docker pull vizshrc/nginx
 `docker run --name nginx -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d:ro -v /root:/root/:ro -d vizshrc/nginx`
 到这里正常来说就成功了，可以去访问试试
 
-####4.我个人需要的挂载的命令调整如下：
+#### 4.我个人需要的挂载的命令调整如下：
 
 `docker run --name nginx -p 443:443 -v /etc/nginx/conf.d:/etc/nginx/conf.d:ro -v /var/www:/var/www:ro -v /root:/root/:ro --net v2-net -d vizshrc/nginx`
  ![index.html](https://github.com/vizshrc/readme_pic/blob/master/image/webdav.png)
